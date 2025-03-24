@@ -1,7 +1,7 @@
 const zeroWidthSpace = "\u200B";
     document.title = zeroWidthSpace;
 
-    const nameStr = "sent";
+    const nameStr = "jaycuh";
     let currentIndex = 0;
     let deleting = false;
 
