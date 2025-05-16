@@ -13,114 +13,130 @@
   <meta property="og:description" content="come back to my arms vro, yk who you are." />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <style>
-    .profile-card {
-      position: relative;
-      display: flex;
-      flex-direction: row;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .main-content {
-      flex: 1;
-    }
-
-    .widget-side {
-      width: 300px;
-      height: 200px;
+    /* Added for widget placement */
+    .widget-bottom {
+      margin-top: 20px;
+      width: 250px;
+      height: 150px;
       background: #ffffff0d;
       border: 1px solid #ffffff22;
       border-radius: 12px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.2);
       backdrop-filter: blur(8px);
       overflow: hidden;
-      transform: perspective(1000px) rotateY(-1deg);
+      transform: perspective(1000px) rotateX(1deg);
+      margin-left: auto;
+      margin-right: auto;
     }
 
-    .widget-side iframe {
+    .widget-bottom iframe {
       width: 100%;
       height: 100%;
       border: none;
-      border-radius: 12px;
     }
 
-    @media (max-width: 768px) {
-      .profile-card {
-        flex-direction: column;
-        align-items: center;
-      }
+    #enter-screen {
+      position: fixed;
+      inset: 0;
+      background: #000;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      cursor: pointer;
+      font-family: sans-serif;
+    }
 
-      .widget-side {
-        width: 100%;
-        max-width: 300px;
-        margin-top: 20px;
-        transform: none;
-      }
+    #enter-text {
+      font-size: 1.5rem;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
 
+  <!-- Click to Enter Screen -->
+  <div id="enter-screen" class="enter-screen">
+    <button id="enter-text">Click anywhere to enter...</button>
+  </div>
+
+  <!-- Background music -->
   <audio id="bg-music" src="/assets/sounds/over.mp3" loop></audio>
   <div class="background"></div>
 
-  <div class="bio-container">
+  <!-- Main Content -->
+  <div class="bio-container" style="display: none; opacity: 0;">
     <div class="profile-card">
-      <div class="main-content">
-        <div class="banner"></div>
-        <img src="https://i.scdn.co/image/ab67616d0000b273e68cd6d1c60121100419161e" alt="Profile Picture" class="profile-img">
-        <h1 class="name">jacob</h1>
+      <div class="banner"></div>
+      <img src="https://i.scdn.co/image/ab67616d0000b273e68cd6d1c60121100419161e" alt="Profile Picture" class="profile-img">
+      <h1 class="name">jacob</h1>
 
+      <div class="project-link">
+        <h2>My Latest Project</h2>
+        <a href="https://imperfect.onrender.com/" target="_blank" class="project-link-btn">
+          Imperfect
+          <span class="tooltip">View Project</span>
+        </a>
         <div class="project-link">
-          <h2>My Latest Project</h2>
-          <a href="https://imperfect.onrender.com/" target="_blank" class="project-link-btn">
-            Imperfect
+          <a href="https://hub.is-a.dev/" target="_blank" class="project-link-btn">
+            shrinkly
             <span class="tooltip">View Project</span>
           </a>
-          <div class="project-link">
-            <a href="https://hub.is-a.dev/" target="_blank" class="project-link-btn">
-              shrinkly
-              <span class="tooltip">View Project</span>
-            </a>
-          </div>
-        </div>
-
-        <p class="quote">"Life goes on, but I still miss you."</p>
-        <p class="author">- Jacob</p>
-
-        <div class="social-icons-container">
-          <div class="social-icons">
-            <a href="https://discord.gg/dpAXC6Gjs6" target="_blank" class="social-icon" data-tooltip="Discord">
-              <i class="fab fa-discord"></i>
-              <span class="tooltip">Discord</span>
-            </a>
-            <a href="https://github.com/jOaawd" target="_blank" class="social-icon" data-tooltip="GitHub">
-              <i class="fab fa-github"></i>
-              <span class="tooltip">GitHub</span>
-            </a>
-            <a href="https://fmode.is-a.dev/" target="_blank" class="social-icon" data-tooltip="Website">
-              <i class="fa solid fa-globe"></i>
-              <span class="tooltip">Website</span>
-            </a>
-            <a href="https://www.instagram.com/hxrrvr/" target="_blank" class="social-icon" data-tooltip="Instagram">
-              <i class="fa-brands fa-instagram"></i>
-              <span class="tooltip">Instagram</span>
-            </a>
-          </div>
         </div>
       </div>
 
-      <!-- Attached Widget -->
-      <div class="widget-side">
+      <p class="quote">"Life goes on, but I still miss you."</p>
+      <p class="author">- Jacob</p>
+
+      <div class="social-icons-container">
+        <div class="social-icons">
+          <a href="https://discord.gg/dpAXC6Gjs6" target="_blank" class="social-icon" data-tooltip="Discord">
+            <i class="fab fa-discord"></i>
+            <span class="tooltip">Discord</span>
+          </a>
+          <a href="https://github.com/jOaawd" target="_blank" class="social-icon" data-tooltip="GitHub">
+            <i class="fab fa-github"></i>
+            <span class="tooltip">GitHub</span>
+          </a>
+          <a href="https://fmode.is-a.dev/" target="_blank" class="social-icon" data-tooltip="Website">
+            <i class="fa solid fa-globe"></i>
+            <span class="tooltip">Website</span>
+          </a>
+          <a href="https://www.instagram.com/hxrrvr/" target="_blank" class="social-icon" data-tooltip="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+            <span class="tooltip">Instagram</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Bottom Widget -->
+      <div class="widget-bottom">
         <iframe 
           src="https://fmode.is-a.dev/widget" 
           loading="lazy"
           title="Fmode Widget">
         </iframe>
       </div>
+
     </div>
   </div>
+
+  <!-- Scripts -->
+  <script>
+    // Show content after click
+    document.getElementById('enter-screen').addEventListener('click', () => {
+      document.getElementById('enter-screen').style.display = 'none';
+      document.querySelector('.bio-container').style.display = 'block';
+      setTimeout(() => {
+        document.querySelector('.bio-container').style.opacity = '1';
+      }, 50);
+      document.getElementById('bg-music').play();
+    });
+  </script>
 
   <script src="/assets/js/oneko.js" defer></script>
   <script src="/assets/js/index.js" defer></script>
