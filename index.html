@@ -33,8 +33,6 @@
       height: 30%;
       border: none;
     }
-
-    
   </style>
 </head>
 <body>
@@ -49,7 +47,7 @@
   <div class="bio-container" style="display: none; opacity: 0;">
     <div class="profile-card">
       <div class="banner"></div>
-      <img src="https://i.scdn.co/image/ab67616d0000b273e68cd6d1c60121100419161e" alt="Profile Picture" class="profile-img">
+      <img id="profile-img" src="https://i.scdn.co/image/ab67616d0000b273e68cd6d1c60121100419161e" alt="Profile Picture" class="profile-img">
       <h1 class="name">jacob</h1>
 
       <div class="project-link">
@@ -102,6 +100,17 @@
   </div>
 
   <script>
+// fetch my api
+    fetch('https://fmode.is-a.dev/api/profile')
+      .then(response => response.json())
+      .then(data => {
+        const avatarUrl = data.avatar; 
+        document.getElementById('profile-img').src = avatarUrl; 
+      })
+      .catch(error => {
+        console.error('Error fetching profile data:', error);
+      });
+
     document.getElementById('enter-screen').addEventListener('click', () => {
       document.getElementById('enter-screen').style.display = 'none';
       document.querySelector('.bio-container').style.display = 'block';
