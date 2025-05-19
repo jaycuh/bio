@@ -101,15 +101,18 @@
 
   <script>
 // fetch my api
-    fetch('https://fmode.is-a.dev/api/profile')
-      .then(response => response.json())
-      .then(data => {
-        const avatarUrl = data.avatar; 
-        document.getElementById('profile-img').src = avatarUrl; 
-      })
-      .catch(error => {
-        console.error('Error fetching profile data:', error);
-      });
+   fetch('https://fmode.is-a.dev/api/profile')
+  .then(response => response.json())
+  .then(data => {
+    const avatarUrl = data.avatar;
+// pproxied cuz dns from my school
+    const proxyUrl = `https://images.weserv.nl/?url=${encodeURIComponent(avatarUrl)}`;
+    document.getElementById('profile-img').src = proxyUrl; 
+  })
+  .catch(error => {
+    console.error('Error fetching profile data:', error);
+  });
+
 
     document.getElementById('enter-screen').addEventListener('click', () => {
       document.getElementById('enter-screen').style.display = 'none';
